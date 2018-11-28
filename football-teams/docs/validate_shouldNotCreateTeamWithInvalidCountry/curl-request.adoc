@@ -1,0 +1,12 @@
+[source,bash]
+----
+$ curl 'https://football.com/teams' -i -X POST \
+    -H 'Content-Type: application/json;charset=ISO-8859-1' \
+    -H 'Content-Type: application/json' \
+    -d '{
+  "name" : "Arsenal",
+  "fullName" : "Arsenal Football Club",
+  "acronym" : "ARS",
+  "country" : "En"
+}'
+----

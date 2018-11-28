@@ -1,0 +1,13 @@
+[source,bash]
+----
+$ curl 'https://football.com/players/1' -i -X PUT \
+    -H 'Content-Type: application/json;charset=ISO-8859-1' \
+    -H 'Content-Type: application/json' \
+    -d '{
+  "name" : "S. HandanoviÄ",
+  "fullName" : "Samir HandanoviÄ ",
+  "nationality" : "Slovenia Slovenia Slovenia Slovenia",
+  "bornDate" : "1984-07-14",
+  "positions" : [ "CB", "LB" ]
+}'
+----

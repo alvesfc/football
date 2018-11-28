@@ -1,0 +1,111 @@
+
+== *Criação de um Jogador*
+
+
+=== *Sem informar o nome*
+
+.request
+include::validate_shouldNotCreatePlayerWithoutName/request-fields.adoc[]
+
+include::validate_shouldNotCreatePlayerWithoutName/http-request.adoc[]
+
+.response
+include::validate_shouldNotCreatePlayerWithoutName/response-fields.adoc[]
+
+include::validate_shouldNotCreatePlayerWithoutName/http-response.adoc[]
+
+=== *Informando um nome inválido*
+
+.request
+include::validate_shouldNotCreatePlayerWithInvalidName/request-fields.adoc[]
+
+include::validate_shouldNotCreatePlayerWithInvalidName/http-request.adoc[]
+
+.response
+include::validate_shouldNotCreatePlayerWithInvalidName/response-fields.adoc[]
+
+include::validate_shouldNotCreatePlayerWithInvalidName/http-response.adoc[]
+
+=== *Informando o nome completo inválido*
+
+.request
+include::validate_shouldNotCreatePlayerWithInvalidFullname/request-fields.adoc[]
+
+include::validate_shouldNotCreatePlayerWithInvalidFullname/http-request.adoc[]
+
+.response
+include::validate_shouldNotCreatePlayerWithInvalidFullname/response-fields.adoc[]
+
+include::validate_shouldNotCreatePlayerWithInvalidFullname/http-response.adoc[]
+
+=== *Sem informar a nacionalidade*
+
+.request
+include::validate_shouldNotCreatePlayerWithoutNationality/request-fields.adoc[]
+
+include::validate_shouldNotCreatePlayerWithoutNationality/http-request.adoc[]
+
+.response
+include::validate_shouldNotCreatePlayerWithoutNationality/response-fields.adoc[]
+
+include::validate_shouldNotCreatePlayerWithoutNationality/http-response.adoc[]
+
+=== *Informando uma nacionalidade inválida*
+
+.request
+include::validate_shouldNotCreatePlayerWithInvalidNationality/request-fields.adoc[]
+
+include::validate_shouldNotCreatePlayerWithInvalidNationality/http-request.adoc[]
+
+.response
+include::validate_shouldNotCreatePlayerWithInvalidNationality/response-fields.adoc[]
+
+include::validate_shouldNotCreatePlayerWithInvalidNationality/http-response.adoc[]
+
+=== *Sem informar a data de nascimento*
+
+.request
+include::validate_shouldNotCreatePlayerWithoutBornDate/request-fields.adoc[]
+
+include::validate_shouldNotCreatePlayerWithoutBornDate/http-request.adoc[]
+
+.response
+include::validate_shouldNotCreatePlayerWithoutBornDate/response-fields.adoc[]
+
+include::validate_shouldNotCreatePlayerWithoutBornDate/http-response.adoc[]
+
+=== *Informando uma data de nascimento inválida*
+
+.request
+include::validate_shouldNotCreatePlayerWithInvalidBornDate/request-fields.adoc[]
+
+include::validate_shouldNotCreatePlayerWithInvalidBornDate/http-request.adoc[]
+
+.response
+include::validate_shouldNotCreatePlayerWithInvalidBornDate/response-fields.adoc[]
+
+include::validate_shouldNotCreatePlayerWithInvalidBornDate/http-response.adoc[]
+
+=== *Sem informar a(s) posição(s)*
+
+.request
+include::validate_shouldNotCreatePlayerWithoutPositions/request-fields.adoc[]
+
+include::validate_shouldNotCreatePlayerWithoutPositions/http-request.adoc[]
+
+.response
+include::validate_shouldNotCreatePlayerWithoutPositions/response-fields.adoc[]
+
+include::validate_shouldNotCreatePlayerWithoutPositions/http-response.adoc[]
+
+=== *Infomando uma posição inválida*
+
+.request
+include::validate_shouldNotCreatePlayerWithInvalidPositions/request-fields.adoc[]
+
+include::validate_shouldNotCreatePlayerWithInvalidPositions/http-request.adoc[]
+
+.response
+include::validate_shouldNotCreatePlayerWithInvalidPositions/response-fields.adoc[]
+
+include::validate_shouldNotCreatePlayerWithInvalidPositions/http-response.adoc[]

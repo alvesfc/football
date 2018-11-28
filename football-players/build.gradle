@@ -1,0 +1,104 @@
+buildscript {
+    ext {
+        springCloudVersion = 'Finchley.RELEASE'
+        springBootVersion = '2.0.2.RELEASE'
+        springCloudContractVersion = '2.0.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        mavenLocal()
+
+    }
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:0.6.0.RELEASE"
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "org.springframework.cloud:spring-cloud-contract-gradle-plugin:${springCloudContractVersion}"
+        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.6'
+        classpath "gradle.plugin.com.boxfuse.client:gradle-plugin-publishing:5.1.1"
+        classpath 'org.postgresql:postgresql:42.2.1'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'spring-cloud-contract'
+
+apply from: 'gradle/flyway.gradle'
+apply from: 'gradle/documentation.gradle'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
+    mavenLocal()
+}
+
+
+dependencies {
+    compile 'io.micrometer:micrometer-registry-prometheus:latest.release'
+
+    compile('org.springframework.boot:spring-boot-starter-hateoas')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.cloud:spring-cloud-starter-sleuth')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.1'
+    runtime('org.springframework.boot:spring-boot-devtools')
+
+    runtime('com.h2database:h2')
+
+    compile('br.org.ehandler:ehandler:0.0.1-SNAPSHOT')
+
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.cloud:spring-cloud-contract-wiremock')
+    testCompile('org.springframework.cloud:spring-cloud-starter-contract-stub-runner')
+    testCompile('org.springframework.cloud:spring-cloud-starter-contract-verifier')
+    testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
+
+    testCompile('org.flywaydb.flyway-test-extensions:flyway-spring-test:5.1.0')
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+contracts {
+    packageWithBaseClasses = 'br.com.football.players'
+
+    baseClassMappings {
+        baseClassMapping(".*success.*create.*", "br.com.football.players.SuccessBase")
+
+        baseClassMapping(".*fail.*create.*", "br.com.football.players.FailBase")
+    }
+}
+
+
+bootRun {
+    if(System.properties['spring.profiles.active'] == null){
+        System.properties['spring.profiles.active'] = 'local'
+    }
+    systemProperty 'spring.profiles.active', System.properties['spring.profiles.active']
+}
+
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file("$buildDir/classes/main/")
+    }
+}

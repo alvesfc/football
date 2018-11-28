@@ -1,0 +1,61 @@
+== *Alteração*
+
+=== *Jogador que não está cadastrado*
+
+.request
+include::validate_shouldNotUpdatePlayerWhenNotFound/request-fields.adoc[]
+
+include::validate_shouldNotUpdatePlayerWhenNotFound/http-request.adoc[]
+
+.response
+include::validate_shouldNotUpdatePlayerWhenNotFound/response-fields.adoc[]
+
+include::validate_shouldNotUpdatePlayerWhenNotFound/http-response.adoc[]
+
+=== *Informando um nome inválido*
+
+.request
+include::validate_shouldNotUpdatePlayerWithInvalidName/request-fields.adoc[]
+
+include::validate_shouldNotUpdatePlayerWithInvalidName/http-request.adoc[]
+
+.response
+include::validate_shouldNotUpdatePlayerWithInvalidName/response-fields.adoc[]
+
+include::validate_shouldNotUpdatePlayerWithInvalidName/http-response.adoc[]
+
+=== *Informando o nome completo inválido*
+
+.request
+include::validate_shouldNotUpdatePlayerWithInvalidFullname/request-fields.adoc[]
+
+include::validate_shouldNotUpdatePlayerWithInvalidFullname/http-request.adoc[]
+
+.response
+include::validate_shouldNotUpdatePlayerWithInvalidFullname/response-fields.adoc[]
+
+include::validate_shouldNotUpdatePlayerWithInvalidFullname/http-response.adoc[]
+
+=== *Informando uma data de nascimento inválida*
+
+.request
+include::validate_shouldNotUpdatePlayerWithInvalidBornDate/request-fields.adoc[]
+
+include::validate_shouldNotUpdatePlayerWithInvalidBornDate/http-request.adoc[]
+
+.response
+include::validate_shouldNotUpdatePlayerWithInvalidBornDate/response-fields.adoc[]
+
+include::validate_shouldNotUpdatePlayerWithInvalidBornDate/http-response.adoc[]
+
+=== *Infomando uma posição inválida*
+
+.request
+include::validate_shouldNotUpdatePlayerWithInvalidPositions/request-fields.adoc[]
+
+include::validate_shouldNotUpdatePlayerWithInvalidPositions/http-request.adoc[]
+
+.response
+include::validate_shouldNotUpdatePlayerWithInvalidPositions/response-fields.adoc[]
+
+include::validate_shouldNotUpdatePlayerWithInvalidPositions/http-response.adoc[]

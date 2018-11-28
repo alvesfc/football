@@ -1,0 +1,15 @@
+[source,http,options="nowrap"]
+----
+POST /teams HTTP/1.1
+Content-Type: application/json;charset=ISO-8859-1
+Content-Type: application/json
+Host: football.com
+Content-Length: 110
+
+{
+  "name" : "Arsenal",
+  "fullName" : "Arsenal Football Club",
+  "acronym" : "ARS",
+  "country" : "England"
+}
+----

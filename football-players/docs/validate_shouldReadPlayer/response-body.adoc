@@ -1,0 +1,11 @@
+[source,options="nowrap"]
+----
+{
+  "name" : "J. Arp",
+  "fullName" : "Jann-Fiete Arp",
+  "nationality" : "Germany",
+  "bornDate" : "2000-01-06",
+  "active" : true,
+  "positions" : [ "ST" ]
+}
+----

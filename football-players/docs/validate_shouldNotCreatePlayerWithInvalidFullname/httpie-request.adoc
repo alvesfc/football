@@ -1,0 +1,12 @@
+[source,bash]
+----
+$ echo '{
+  "name" : "M. Sadler",
+  "fullName" : "Ma",
+  "nationality" : "England",
+  "bornDate" : "1985-02-26",
+  "positions" : [ "GK" ]
+}' | http POST 'https://football.com/players' \
+    'Content-Type:application/json;charset=ISO-8859-1' \
+    'Content-Type:application/json'
+----

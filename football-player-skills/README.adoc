@@ -1,0 +1,66 @@
+= football-players
+
+Aplicação para estudo do Spring Framework
+
+== Tech
+Tecnologias utilizadas:
+
+* Spring (link:https://cloud.spring.io/spring-cloud-sleuth[Spring Cloud Sleuth], link:https://spring.io/projects/spring-data-cassandra/[Spring Data Cassandra], link:https://spring.io/guides/gs/actuator-service[Spring Boot Actuator], link:https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html[Spring Boot Devtools], link:https://spring.io/projects/spring-restdocs[Spring REST Docs], link:https://cloud.spring.io/spring-cloud-contract/[Spring Cloud Contract])
+* link:https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-metrics[Micrometer]
+* Data Base (link:http://cassandra.apache.org/[Cassandra])
+* link:https://www.docker.com[Docker]
+* link:https://asciidoctor.org[Asciidoctor]
+* link:https://gradle.org[Gradle]
+
+== Estrutura do projeto
+
+
+```
+├── docker
+├── docs
+├── gradle
+
+
+
+ - `docker` - Diretório com as imagens do docker
+ - `docs` - Diretório com a documentação do projeto gerado a partir dos testes
+ - `gradle` - Diretório com as configurações dos plugins
+
+```
+
+== Comandos
+
+=== Configuração do banco de dados via docker
+
+ Executar o comando abaixo no diretório docker, na raiz do projeto
+
+[source,shell]
+----
+docker-compose up
+----
+
+
+=== Execução de testes
+
+ Build do projeto e execução dos testes.
+
+[source,shell]
+----
+./gradlew clean build
+----
+
+=== Iniciando o projeto
+
+    Iniciar o projeto com o profile default (local) na porta http://localhost:9075.
+
+[source,shell]
+----
+./gradlew bootrun
+----
+
+=== Iniciando o projeto com um profile específico
+
+[source,shell]
+----
+./gradlew bootRun -Dspring.profiles.active=contract-test
+----

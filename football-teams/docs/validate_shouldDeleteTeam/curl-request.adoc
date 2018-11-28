@@ -1,0 +1,6 @@
+[source,bash]
+----
+$ curl 'https://football.com/teams/4614eb6f-bcc8-498c-8013-09e687e08d69' -i -X DELETE \
+    -H 'Content-Type: application/json;charset=ISO-8859-1' \
+    -H 'Content-Type: application/json'
+----

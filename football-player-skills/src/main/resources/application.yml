@@ -1,0 +1,49 @@
+#############################################################################
+## Server configuration
+#############################################################################
+server:
+  port: ${PORT:8080}
+#############################################################################
+## Log configuration
+#############################################################################
+logging:
+  level:
+    root: INFO
+#############################################################################
+## Messages configuration
+#############################################################################
+spring:
+  messages:
+    always-use-message-format: true
+    basename: i18n/messages
+    encoding: UTF-8
+
+#############################################################################
+## Actuator EndPoints configuration
+#############################################################################
+endpoints:
+  enabled: false
+  health:
+    enabled: true
+    sensitive: true
+  metrics:
+    enabled: true
+  monitors:
+    enabled: true
+#############################################################################
+## Management configuration
+#############################################################################
+management:
+  health:
+    db:
+      enabled: true
+    diskspace:
+      enabled: true
+    defaults:
+      enabled: true
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: prometheus, health, metrics

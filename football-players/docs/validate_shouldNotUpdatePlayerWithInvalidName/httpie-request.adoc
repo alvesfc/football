@@ -1,0 +1,12 @@
+[source,bash]
+----
+$ echo '{
+  "name" : "A. Jahanbakhsh Jahanbakhsh Jahanbakhsh",
+  "fullName" : "Alireza Jahanbakhsh ",
+  "nationality" : "Iran",
+  "bornDate" : "1993-10-08",
+  "positions" : [ "LW" ]
+}' | http PUT 'https://football.com/players/1' \
+    'Content-Type:application/json;charset=ISO-8859-1' \
+    'Content-Type:application/json'
+----

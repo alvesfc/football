@@ -1,0 +1,10 @@
+[source,options="nowrap"]
+----
+{
+  "name" : "S. HandanoviÄ",
+  "fullName" : "Samir HandanoviÄ ",
+  "nationality" : "Slovenia Slovenia Slovenia Slovenia",
+  "bornDate" : "1984-07-14",
+  "positions" : [ "CB", "LB" ]
+}
+----

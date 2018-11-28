@@ -1,0 +1,24 @@
+[source,options="nowrap"]
+----
+{
+  "season" : "2017-2018",
+  "traits" : [ "Diver", "Long Shot Taker" ],
+  "specialities" : [ "Dribbler" ],
+  "attributes" : [ {
+    "category" : "Physical",
+    "values" : [ {
+      "name" : "Acceleration",
+      "value" : 80
+    }, {
+      "name" : "Agility",
+      "value" : 75
+    } ]
+  }, {
+    "category" : "Technical",
+    "values" : [ {
+      "name" : "Ball Control",
+      "value" : 88
+    } ]
+  } ]
+}
+----

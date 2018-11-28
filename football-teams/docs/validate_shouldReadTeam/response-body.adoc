@@ -1,0 +1,10 @@
+[source,options="nowrap"]
+----
+{
+  "name" : "São Paulo",
+  "fullName" : "São Paulo Futebol Clube",
+  "acronym" : "SPO",
+  "country" : "Brazil",
+  "active" : true
+}
+----

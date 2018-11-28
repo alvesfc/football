@@ -1,0 +1,9 @@
+apply plugin: "org.flywaydb.flyway"
+
+flyway {
+    url = 'jdbc:postgresql://localhost:54320/football_player_db?currentSchema=football_player'
+    user = 'user'
+    password = 'pass'
+    schemas = ['football_player']
+
+}

@@ -1,0 +1,11 @@
+== *Exclusão*
+
+=== *Jogador que não está cadastrado*
+
+.request
+include::validate_shouldNotDeletePlayerWhenNotFound/http-request.adoc[]
+
+.response
+include::validate_shouldNotDeletePlayerWhenNotFound/response-fields.adoc[]
+
+include::validate_shouldNotDeletePlayerWhenNotFound/http-response.adoc[]

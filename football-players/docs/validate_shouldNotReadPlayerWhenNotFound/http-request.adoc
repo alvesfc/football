@@ -1,0 +1,8 @@
+[source,http,options="nowrap"]
+----
+GET /players/1 HTTP/1.1
+Content-Type: application/json;charset=ISO-8859-1
+Content-Type: application/json
+Host: football.com
+
+----

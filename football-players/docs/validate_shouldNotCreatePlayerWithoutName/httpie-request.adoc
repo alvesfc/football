@@ -1,0 +1,11 @@
+[source,bash]
+----
+$ echo '{
+  "fullName" : "Neymar da Silva Santos Jr. ",
+  "nationality" : "Brazil",
+  "bornDate" : "1992-05-02",
+  "positions" : [ "LW" ]
+}' | http POST 'https://football.com/players' \
+    'Content-Type:application/json;charset=ISO-8859-1' \
+    'Content-Type:application/json'
+----

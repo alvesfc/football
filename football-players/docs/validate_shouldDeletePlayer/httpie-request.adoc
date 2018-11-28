@@ -1,0 +1,6 @@
+[source,bash]
+----
+$ http DELETE 'https://football.com/players/15' \
+    'Content-Type:application/json;charset=ISO-8859-1' \
+    'Content-Type:application/json'
+----

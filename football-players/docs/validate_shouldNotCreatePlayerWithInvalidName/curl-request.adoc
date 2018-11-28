@@ -1,0 +1,13 @@
+[source,bash]
+----
+$ curl 'https://football.com/players' -i -X POST \
+    -H 'Content-Type: application/json;charset=ISO-8859-1' \
+    -H 'Content-Type: application/json' \
+    -d '{
+  "name" : "A. Jahanbakhsh Jahanbakhsh Jahanbakhsh",
+  "fullName" : "Alireza Jahanbakhsh ",
+  "nationality" : "Iran",
+  "bornDate" : "1993-10-08",
+  "positions" : [ "LW" ]
+}'
+----

@@ -1,0 +1,16 @@
+
+= Football Players API
+
+== *Cenários de Teste*
+
+* Sucesso
+** link:success_create_case.html[Criação]
+** link:success_read_case.html[Consulta]
+** link:success_update_case.html[Alteração]
+** link:success_delete_case.html[Exclusão]
+* Fluxo de Exceção
+** link:fail_create_case.html[Criação]
+** link:fail_read_case.html[Consulta]
+** link:fail_update_case.html[Alteração]
+** link:fail_delete_case.html[Exclusão]
+

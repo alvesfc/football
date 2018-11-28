@@ -1,0 +1,24 @@
+|===
+|Path|Type|Description
+
+|`+name+`
+|`+Text+`
+|The player's name
+
+|`+fullName+`
+|`+Text+`
+|The player's fullName
+
+|`+nationality+`
+|`+Text+`
+|The player's name
+
+|`+bornDate+`
+|`+Date+`
+|The player's bornDate
+
+|`+positions+`
+|`+List+`
+|The player's positions
+
+|===

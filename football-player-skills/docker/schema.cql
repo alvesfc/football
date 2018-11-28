@@ -1,0 +1,1 @@
+CREATE KEYSPACE IF NOT EXISTS football_player_skill WITH replication = {'class':'SimpleStrategy','replication_factor':'1'};

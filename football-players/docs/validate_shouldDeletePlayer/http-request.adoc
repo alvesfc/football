@@ -1,0 +1,8 @@
+[source,http,options="nowrap"]
+----
+DELETE /players/15 HTTP/1.1
+Content-Type: application/json;charset=ISO-8859-1
+Content-Type: application/json
+Host: football.com
+
+----

@@ -1,0 +1,19 @@
+#############################################################################
+## Server configuration
+#############################################################################
+server:
+  port: ${PORT:9075}
+#############################################################################
+## Cassandra Configuration
+#############################################################################
+spring:
+  data:
+    cassandra:
+      cluster-name: football_player
+      keyspace-name: football_player_skill
+      contact-points: 127.0.0.1
+      port: 9042
+      username: cassandra
+      password: cassandra
+      consistency-level: quorum
+      serial-consistency-level: quorum

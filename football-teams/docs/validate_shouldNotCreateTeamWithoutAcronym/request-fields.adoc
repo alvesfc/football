@@ -1,0 +1,16 @@
+|===
+|Path|Type|Description
+
+|`+name+`
+|`+Text+`
+|The team's name
+
+|`+fullName+`
+|`+Text+`
+|The team's fullName
+
+|`+country+`
+|`+Text+`
+|The team's country
+
+|===

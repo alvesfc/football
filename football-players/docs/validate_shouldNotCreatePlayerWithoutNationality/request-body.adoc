@@ -1,0 +1,9 @@
+[source,options="nowrap"]
+----
+{
+  "name" : "Neymar",
+  "fullName" : "Neymar da Silva Santos Jr. ",
+  "bornDate" : "1992-05-02",
+  "positions" : [ "LW" ]
+}
+----

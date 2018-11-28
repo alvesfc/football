@@ -1,0 +1,11 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 201 Created
+Location: /players/1
+Content-Type: application/json;charset=UTF-8
+Content-Length: 16
+
+{
+  "code" : 1
+}
+----

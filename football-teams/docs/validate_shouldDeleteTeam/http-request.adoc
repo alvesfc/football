@@ -1,0 +1,8 @@
+[source,http,options="nowrap"]
+----
+DELETE /teams/4614eb6f-bcc8-498c-8013-09e687e08d69 HTTP/1.1
+Content-Type: application/json;charset=ISO-8859-1
+Content-Type: application/json
+Host: football.com
+
+----

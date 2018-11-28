@@ -1,0 +1,8 @@
+
+=== *Exclusão de um Jogador*
+
+.request
+include::validate_shouldDeletePlayer/http-request.adoc[]
+
+.response
+include::validate_shouldDeletePlayer/http-response.adoc[]

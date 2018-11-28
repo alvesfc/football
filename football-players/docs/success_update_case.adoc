@@ -1,0 +1,12 @@
+
+=== *Alteração de um Jogador*
+
+.request
+include::validate_shouldUpdatePlayer/request-fields.adoc[]
+
+include::validate_shouldUpdatePlayer/http-request.adoc[]
+
+.response
+
+include::validate_shouldUpdatePlayer/http-response.adoc[]
+

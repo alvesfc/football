@@ -1,0 +1,13 @@
+[source,bash]
+----
+$ curl 'https://football.com/players/1' -i -X PUT \
+    -H 'Content-Type: application/json;charset=ISO-8859-1' \
+    -H 'Content-Type: application/json' \
+    -d '{
+  "name" : "D. Mbonabucya",
+  "fullName" : "DÃ©sirÃ© Mbonabucya ",
+  "nationality" : "Rwanda",
+  "bornDate" : "1984/07/14",
+  "positions" : [ "ST" ]
+}'
+----

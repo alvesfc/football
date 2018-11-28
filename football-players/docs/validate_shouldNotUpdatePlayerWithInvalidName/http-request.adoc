@@ -1,0 +1,16 @@
+[source,http,options="nowrap"]
+----
+PUT /players/1 HTTP/1.1
+Content-Type: application/json;charset=ISO-8859-1
+Content-Type: application/json
+Host: football.com
+Content-Length: 175
+
+{
+  "name" : "A. Jahanbakhsh Jahanbakhsh Jahanbakhsh",
+  "fullName" : "Alireza Jahanbakhsh ",
+  "nationality" : "Iran",
+  "bornDate" : "1993-10-08",
+  "positions" : [ "LW" ]
+}
+----

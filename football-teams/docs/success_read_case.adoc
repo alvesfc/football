@@ -1,0 +1,10 @@
+
+=== *Consulta de um Time*
+
+.request
+include::validate_shouldReadTeam/http-request.adoc[]
+
+.response
+include::validate_shouldReadTeam/response-fields.adoc[]
+
+include::validate_shouldReadTeam/http-response.adoc[]

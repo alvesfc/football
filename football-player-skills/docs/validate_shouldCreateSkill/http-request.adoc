@@ -1,0 +1,30 @@
+[source,http,options="nowrap"]
+----
+POST /319626f3-d429-4d10-ac64-bd7b6fde53e7/skills HTTP/1.1
+Content-Type: application/json;charset=ISO-8859-1
+Content-Type: application/json
+Host: football.com
+Content-Length: 410
+
+{
+  "season" : "2017-2018",
+  "traits" : [ "Diver", "Long Shot Taker" ],
+  "specialities" : [ "Dribbler" ],
+  "attributes" : [ {
+    "category" : "Physical",
+    "values" : [ {
+      "name" : "Acceleration",
+      "value" : 80
+    }, {
+      "name" : "Agility",
+      "value" : 75
+    } ]
+  }, {
+    "category" : "Technical",
+    "values" : [ {
+      "name" : "Ball Control",
+      "value" : 88
+    } ]
+  } ]
+}
+----

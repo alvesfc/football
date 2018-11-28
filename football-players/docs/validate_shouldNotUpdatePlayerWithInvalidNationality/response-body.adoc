@@ -1,0 +1,9 @@
+[source,options="nowrap"]
+----
+{
+  "errors" : [ {
+    "code" : "FIELD_IS_INVALID",
+    "message" : "Field nationality with value (Slovenia Slovenia Slovenia Slovenia) is invalid."
+  } ]
+}
+----

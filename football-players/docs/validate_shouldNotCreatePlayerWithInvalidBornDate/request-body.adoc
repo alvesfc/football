@@ -1,0 +1,10 @@
+[source,options="nowrap"]
+----
+{
+  "name" : "D. Mbonabucya",
+  "fullName" : "DÃ©sirÃ© Mbonabucya ",
+  "nationality" : "Rwanda",
+  "bornDate" : "1984/07/14",
+  "positions" : [ "ST" ]
+}
+----

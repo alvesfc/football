@@ -1,0 +1,16 @@
+|===
+|Path|Type|Description
+
+|`+errors[].code+`
+|`+String+`
+|The error's code
+
+|`+errors+`
+|`+String+`
+|Object with errors messagens
+
+|`+errors[].message+`
+|`+String+`
+|The error's message
+
+|===

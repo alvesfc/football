@@ -1,0 +1,8 @@
+[source,options="nowrap"]
+----
+{
+  "name" : "Arsenal",
+  "fullName" : "Arsenal Football Club",
+  "acronym" : "ARS"
+}
+----

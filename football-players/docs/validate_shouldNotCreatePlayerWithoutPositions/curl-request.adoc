@@ -1,0 +1,12 @@
+[source,bash]
+----
+$ curl 'https://football.com/players' -i -X POST \
+    -H 'Content-Type: application/json;charset=ISO-8859-1' \
+    -H 'Content-Type: application/json' \
+    -d '{
+  "name" : "Neymar",
+  "fullName" : "Neymar da Silva Santos Jr. ",
+  "nationality" : "Brazil",
+  "bornDate" : "1992-05-02"
+}'
+----

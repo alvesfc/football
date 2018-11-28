@@ -1,0 +1,26 @@
+#############################################################################
+## Server configuration
+#############################################################################
+server:
+  port: ${PORT:9075}
+#############################################################################
+## Postgresql Configuration
+#############################################################################
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:54320/football_player_db?currentSchema=football_player
+    username: user
+    password: pass
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    generate-ddl: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        temp:
+          use_jdbc_metadata_defaults: false

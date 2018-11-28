@@ -1,0 +1,6 @@
+[source,options="nowrap"]
+----
+{
+  "code" : "c659f834-b884-4d71-a128-1ee21ae3902f"
+}
+----

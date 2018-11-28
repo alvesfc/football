@@ -1,0 +1,11 @@
+[source,bash]
+----
+$ echo '{
+  "name" : "Ar",
+  "fullName" : "Arsenal Football Club",
+  "acronym" : "ARS",
+  "country" : "England"
+}' | http POST 'https://football.com/teams' \
+    'Content-Type:application/json;charset=ISO-8859-1' \
+    'Content-Type:application/json'
+----

@@ -1,0 +1,13 @@
+
+
+=== *Criação das habilidades do Jagador*
+
+.request
+include::validate_shouldCreateSkill/request-fields.adoc[]
+
+include::validate_shouldCreateSkill/http-request.adoc[]
+
+.response
+include::validate_shouldCreateSkill/response-fields.adoc[]
+
+include::validate_shouldCreateSkill/http-response.adoc[]

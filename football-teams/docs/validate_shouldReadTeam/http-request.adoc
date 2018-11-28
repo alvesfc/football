@@ -1,0 +1,8 @@
+[source,http,options="nowrap"]
+----
+GET /teams/3b241101-e2bb-4255-8caf-4136c566a962 HTTP/1.1
+Content-Type: application/json;charset=ISO-8859-1
+Content-Type: application/json
+Host: football.com
+
+----

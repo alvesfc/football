@@ -1,0 +1,9 @@
+[source,options="nowrap"]
+----
+{
+  "errors" : [ {
+    "code" : "PLAYER_NOT_FOUND",
+    "message" : "Player not found."
+  } ]
+}
+----

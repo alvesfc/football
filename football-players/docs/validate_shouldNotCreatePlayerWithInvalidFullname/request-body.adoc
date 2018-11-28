@@ -1,0 +1,10 @@
+[source,options="nowrap"]
+----
+{
+  "name" : "M. Sadler",
+  "fullName" : "Ma",
+  "nationality" : "England",
+  "bornDate" : "1985-02-26",
+  "positions" : [ "GK" ]
+}
+----

@@ -1,0 +1,13 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 400 Bad Request
+Content-Type: application/json;charset=UTF-8
+Content-Length: 156
+
+{
+  "errors" : [ {
+    "code" : "FIELD_IS_INVALID",
+    "message" : "Field nationality with value (Slovenia Slovenia Slovenia Slovenia) is invalid."
+  } ]
+}
+----

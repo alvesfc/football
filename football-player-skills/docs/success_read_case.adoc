@@ -1,0 +1,10 @@
+
+=== *Consulta de um Jogador*
+
+.request
+include::validate_shouldReadPlayer/http-request.adoc[]
+
+.response
+include::validate_shouldReadPlayer/response-fields.adoc[]
+
+include::validate_shouldReadPlayer/http-response.adoc[]

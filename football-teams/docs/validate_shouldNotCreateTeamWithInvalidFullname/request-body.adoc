@@ -1,0 +1,9 @@
+[source,options="nowrap"]
+----
+{
+  "name" : "Arsenal",
+  "fullName" : "Ar",
+  "acronym" : "ARS",
+  "country" : "England"
+}
+----

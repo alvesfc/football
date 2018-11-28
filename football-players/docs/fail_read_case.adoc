@@ -1,0 +1,11 @@
+== *Consulta*
+
+=== *Jogador que não está cadastrado*
+
+.request
+include::validate_shouldNotReadPlayerWhenNotFound/http-request.adoc[]
+
+.response
+include::validate_shouldNotReadPlayerWhenNotFound/response-fields.adoc[]
+
+include::validate_shouldNotReadPlayerWhenNotFound/http-response.adoc[]

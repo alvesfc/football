@@ -1,0 +1,11 @@
+[source,bash]
+----
+$ echo '{
+  "name" : "Arsenal",
+  "fullName" : "Arsenal Football Club",
+  "acronym" : "ARS",
+  "country" : "England"
+}' | http PUT 'https://football.com/teams/e62f1384-f2f0-4817-a0b8-49a24456a532' \
+    'Content-Type:application/json;charset=ISO-8859-1' \
+    'Content-Type:application/json'
+----

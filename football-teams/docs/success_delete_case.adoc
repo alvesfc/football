@@ -1,0 +1,8 @@
+
+=== *Exclusão de um Time*
+
+.request
+include::validate_shouldDeleteTeam/http-request.adoc[]
+
+.response
+include::validate_shouldDeleteTeam/http-response.adoc[]

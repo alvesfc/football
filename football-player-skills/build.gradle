@@ -1,0 +1,110 @@
+buildscript {
+    ext {
+        kotlinVersion = '1.3.10'
+        springBootVersion = '2.1.0.RELEASE'
+        springCloudContractVersion = '2.1.0.M2'
+
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+        mavenLocal()
+    }
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:0.6.0.RELEASE"
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "org.springframework.cloud:spring-cloud-contract-gradle-plugin:${springCloudContractVersion}"
+        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.6'
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+        classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+    }
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-spring'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'spring-cloud-contract'
+
+apply from: 'gradle/documentation.gradle'
+
+group = 'br.com.football'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ["-Xjsr305=strict"]
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ["-Xjsr305=strict"]
+        jvmTarget = "1.8"
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
+    mavenLocal()
+}
+
+
+ext {
+    springCloudVersion = 'Finchley.RELEASE'
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-starter-data-cassandra')
+    compile('org.springframework.boot:spring-boot-starter-hateoas')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('com.fasterxml.jackson.module:jackson-module-kotlin')
+    compile('org.springframework.cloud:spring-cloud-starter-sleuth')
+    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    compile("org.jetbrains.kotlin:kotlin-reflect")
+    compile('br.org.ehandler:ehandler:0.0.1-SNAPSHOT')
+
+    compile('org.cassandraunit:cassandra-unit-spring:3.5.0.1') {
+        exclude group: 'org.slf4j', module: 'log4j-over-slf4j'
+        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+    }
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.cloud:spring-cloud-starter-contract-verifier')
+    testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
+    testCompile group: 'org.apache.maven', name: 'maven-artifact', version: '3.0.3'
+
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+
+bootRun {
+    if (System.properties['spring.profiles.active'] == null) {
+        System.properties['spring.profiles.active'] = 'local'
+    }
+    systemProperty 'spring.profiles.active', System.properties['spring.profiles.active']
+}
+
+
+contracts {
+    packageWithBaseClasses = 'br.com.football.players'
+
+    baseClassMappings {
+        baseClassMapping(".*success.*create.*", "br.com.football.player.skill.SuccessBase")
+        baseClassMapping(".*success.*read.*", "br.com.football.player.skill.SuccessReadBase")
+
+        baseClassMapping(".*fail.*create.*", "br.com.football.player.skill.FailBase")
+    }
+}

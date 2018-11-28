@@ -1,0 +1,12 @@
+[source,bash]
+----
+$ echo '{
+  "name" : "D. Mbonabucya",
+  "fullName" : "DÃ©sirÃ© Mbonabucya ",
+  "nationality" : "Rwanda",
+  "bornDate" : "1984/07/14",
+  "positions" : [ "ST" ]
+}' | http POST 'https://football.com/players' \
+    'Content-Type:application/json;charset=ISO-8859-1' \
+    'Content-Type:application/json'
+----

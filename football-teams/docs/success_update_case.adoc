@@ -1,0 +1,12 @@
+
+=== *Alteração de um Time*
+
+.request
+include::validate_shouldUpdateTeam/request-fields.adoc[]
+
+include::validate_shouldUpdateTeam/http-request.adoc[]
+
+.response
+
+include::validate_shouldUpdateTeam/http-response.adoc[]
+

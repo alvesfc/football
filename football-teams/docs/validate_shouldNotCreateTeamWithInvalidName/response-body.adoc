@@ -1,0 +1,9 @@
+[source,options="nowrap"]
+----
+{
+  "errors" : [ {
+    "code" : "FIELD_IS_INVALID",
+    "message" : "Field name with value (Ar) is invalid."
+  } ]
+}
+----

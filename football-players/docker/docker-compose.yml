@@ -1,0 +1,19 @@
+version: '3'
+services:
+    footballplayer:
+        image: postgres
+        volumes:
+            - football_player_db:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_PASSWORD=pass
+            - POSTGRES_USER=user
+            - POSTGRES_DB=football_player_db
+            - PGDATA=/var/lib/postgresql/data/pgdata
+        ports:
+            - 54320:5432
+#    adminer:
+#        image: adminer
+#        ports:
+#            - 8082:8080
+volumes:
+    football_player_db: {}

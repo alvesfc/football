@@ -1,0 +1,13 @@
+[source,bash]
+----
+$ curl 'https://football.com/players' -i -X POST \
+    -H 'Content-Type: application/json;charset=ISO-8859-1' \
+    -H 'Content-Type: application/json' \
+    -d '{
+  "name" : "M. Sadler",
+  "fullName" : "Ma",
+  "nationality" : "England",
+  "bornDate" : "1985-02-26",
+  "positions" : [ "GK" ]
+}'
+----

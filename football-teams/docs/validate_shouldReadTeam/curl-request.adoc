@@ -1,0 +1,6 @@
+[source,bash]
+----
+$ curl 'https://football.com/teams/3b241101-e2bb-4255-8caf-4136c566a962' -i -X GET \
+    -H 'Content-Type: application/json;charset=ISO-8859-1' \
+    -H 'Content-Type: application/json'
+----
