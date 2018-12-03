@@ -35,8 +35,8 @@ sourceCompatibility = 1.8
 
 repositories {
 	mavenCentral()
-	mavenLocal()
 	maven { url "https://repo.spring.io/milestone" }
+    maven{url "https://github.com/alvesfc/football/raw/master/repository"}
 }
 
 
@@ -48,7 +48,8 @@ dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-actuator')
 	implementation('org.springframework.boot:spring-boot-starter-data-cassandra-reactive')
 	implementation('org.springframework.boot:spring-boot-starter-webflux')
-
+    implementation('org.springframework.boot:spring-boot-starter-hateoas')
+    
 	implementation group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '5.2'
 	implementation('br.org.ehandler:ehandler:0.0.1-SNAPSHOT')
 
@@ -82,8 +83,9 @@ idea {
 }
 
 contracts {
-    packageWithBaseClasses = 'br.com.football.transfers'
+    testMode = "EXPLICIT"
 
+    packageWithBaseClasses = 'br.com.football.transfers'
     baseClassMappings {
         baseClassMapping(".*success.*create.*", "br.com.football.transfers.SuccessBase")
     }

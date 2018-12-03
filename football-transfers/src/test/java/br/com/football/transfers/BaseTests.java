@@ -1,6 +1,7 @@
 package br.com.football.transfers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.restassured.RestAssured;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import org.junit.Before;
 import org.junit.Rule;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.restdocs.JUnitRestDocumentation;
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation;
 import org.springframework.restdocs.payload.FieldDescriptor;
@@ -30,12 +32,17 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.requestF
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = FootballTransfersApplication.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+        classes = FootballTransfersApplication.class,
+        properties = "server.port=0")
 @ActiveProfiles("contract-test")
 @AutoConfigureMockMvc
 @DirtiesContext
 @AutoConfigureRestDocs(outputDir = "build/generated-snippets")
-public abstract class BaseTests extends CassandraSpringBoot{
+public abstract class BaseTests extends CassandraSpringBoot {
+
+    @LocalServerPort
+    int port;
 
     @Autowired
     private WebApplicationContext context;
@@ -75,6 +82,7 @@ public abstract class BaseTests extends CassandraSpringBoot{
                 .alwaysDo(buildResultHandler(methodName))
                 .build();
 
+        RestAssured.baseURI = "http://localhost:" + port;
         RestAssuredMockMvc.mockMvc(this.mockMvc);
     }
 
