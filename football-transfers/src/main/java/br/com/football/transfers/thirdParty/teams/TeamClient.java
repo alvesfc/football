@@ -2,12 +2,11 @@ package br.com.football.transfers.thirdParty.teams;
 
 import br.com.football.transfers.converter.GenericConverter;
 import br.com.football.transfers.thirdParty.APIClient;
-import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import java.util.UUID;
 
@@ -17,14 +16,17 @@ public class TeamClient extends APIClient {
     private final GenericConverter genericConverter;
 
     @Autowired
-    public TeamClient(RestTemplate restTemplate, @Value("${endpoint.teams}") String endPoint,
+    public TeamClient(final WebClient webClient, @Value("${endpoint.teams}") String endPoint,
             final GenericConverter genericConverter) {
-        super(restTemplate, endPoint);
+        super(webClient, endPoint);
         this.genericConverter = genericConverter;
     }
 
-    public TeamResponse find(final UUID id) {
-        final ResponseEntity<JsonNode> responseEntity = super.getOne(endPoint + "/teams/" + id.toString());
-        return genericConverter.readValue(responseEntity.getBody().asText(), TeamResponse.class);
+    public Mono<TeamResponse> find(final UUID id) {
+        return super.get(endPoint + "/teams/" + id.toString())
+                .take(1)
+                .next()
+                .map(genericConverter::writeValueAsString)
+                .map(s -> genericConverter.readValue(s, TeamResponse.class));
     }
 }

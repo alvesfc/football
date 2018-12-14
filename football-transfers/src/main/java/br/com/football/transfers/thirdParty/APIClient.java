@@ -1,20 +1,24 @@
 package br.com.football.transfers.thirdParty;
 
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.collect.ImmutableMap;
 import net.logstash.logback.marker.Markers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.core.io.buffer.DataBuffer;
+import org.springframework.core.io.buffer.DataBufferUtils;
+import org.springframework.http.HttpStatus;
+import org.springframework.util.MimeType;
+import org.springframework.web.reactive.function.BodyExtractors;
+import org.springframework.web.reactive.function.client.ClientResponse;
+import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
-import java.util.Map;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.function.Function;
 
 /**
  * @author alvesfc
@@ -26,98 +30,67 @@ public class APIClient {
 
     private static final String CONTENT_TYPE = "Content-Type";
     private static final String APPLICATION_JSON = "application/json;charset=UTF-8";
-    private final RestTemplate restTemplate;
+    private final WebClient webClient;
     protected final String endPoint;
 
-    public APIClient(final RestTemplate restTemplate, final String endPoint) {
-        this.restTemplate = restTemplate;
+    public APIClient(final WebClient webClient, final String endPoint) {
+        this.webClient = webClient;
         this.endPoint = endPoint;
     }
 
-    protected ResponseEntity<JsonNode[]> get(final String uri) {
-        return restTemplate.exchange(
-                uri, HttpMethod.GET, new HttpEntity<>(buildHeader()),
-                JsonNode[].class);
-    }
-
-    protected ResponseEntity<JsonNode> getOne(final String uri) {
+    protected Flux<JsonNode> get(final String uri) {
         LOG.info(Markers.appendEntries(ImmutableMap.of(
-                "M", "getOne",
+                "M", "get",
                 "uri", uri
         )), "");
 
-        try {
+        return webClient.get()
+                .uri(uri)
+                .header(CONTENT_TYPE, APPLICATION_JSON)
+                .retrieve()
+                .onStatus(HttpStatus::is4xxClientError, getClientResponseMonoFunction())
+                .bodyToFlux(JsonNode.class);
+    }
 
-            return restTemplate.exchange(
-                    uri, HttpMethod.GET, new HttpEntity<>(buildHeader()),
-                    JsonNode.class);
-        } catch (HttpClientErrorException ex) {
-            LOG.error(Markers.appendEntries(ImmutableMap.of(
-                    "M", "getOne",
-                    "ex", ex
-            )), "");
-            if(ex.getStatusCode().is4xxClientError()){
+    private Function<ClientResponse, Mono<? extends Throwable>> getClientResponseMonoFunction() {
+        return response ->
 
-            }else if(ex.getStatusCode().is5xxServerError()){
-
-            }
-            throw ex;
-            //throw new APIException(ex.getResponseBodyAsString(), ex.getStatusCode());
-        }
+                response.body(BodyExtractors.toDataBuffers())
+                        .reduce(DataBuffer::write)
+                        .map(this::buildBytes)
+                        .defaultIfEmpty(new byte[0])
+                        .flatMap(bodyBytes -> {
+                            return buildException(response, bodyBytes);
+                        });
 
     }
 
-    protected <T> ResponseEntity<JsonNode> post(final String uri, final T request) {
-        LOG.info(Markers.appendEntries(ImmutableMap.of(
-                "M", "post",
-                "uri", uri,
-                "request", request.toString()
-        )), "");
-        try {
-
-            return restTemplate.exchange(
-                    uri, HttpMethod.POST, new HttpEntity<>(request, buildHeader()),
-                    JsonNode.class);
-        } catch (HttpClientErrorException ex) {
-            LOG.error(Markers.appendEntries(ImmutableMap.of(
-                    "M", "post",
-                    "ex", ex
-            )), "");
-            throw ex;
-           // throw new APIException(ex.getResponseBodyAsString(), ex.getStatusCode());
-        }
+    private byte[] buildBytes(DataBuffer dataBuffer) {
+        byte[] bytes = new byte[dataBuffer.readableByteCount()];
+        dataBuffer.read(bytes);
+        DataBufferUtils.release(dataBuffer);
+        return bytes;
     }
 
-    protected <T> ResponseEntity<JsonNode> put(final String uri, final T request) {
-        LOG.info(Markers.appendEntries(ImmutableMap.of(
-                "M", "put",
-                "uri", uri,
-                "request", request.toString()
-        )), "");
-
-        try {
-
-            return restTemplate.exchange(uri, HttpMethod.PUT, new HttpEntity<>(request, buildHeader()), JsonNode.class);
-
-        } catch (HttpClientErrorException ex) {
-            LOG.error(Markers.appendEntries(ImmutableMap.of(
-                    "M", "put",
-                    "ex", ex
-            )), "");
-            throw ex;
-           // throw new APIException(ex.getResponseBodyAsString(), ex.getStatusCode());
-        }
+    private Mono<? extends Throwable> buildException(ClientResponse response, byte[] bodyBytes) {
+        return Mono.error(new WebClientResponseException(buildErrorMessage(response),
+                response.statusCode().value(),
+                response.statusCode().getReasonPhrase(),
+                response.headers().asHttpHeaders(),
+                bodyBytes,
+                buildCharset(response)
+        ));
     }
 
-    protected <T> ResponseEntity<JsonNode> delete(final String uri, final T request, final Map<String, String> param) {
-        final HttpEntity<T> httpEntity = new HttpEntity<>(request, buildHeader());
-        return restTemplate
-                .exchange(uri, HttpMethod.DELETE, httpEntity, JsonNode.class, param);
+    private Charset buildCharset(ClientResponse response) {
+        return response.headers().contentType()
+                    .map(MimeType::getCharset)
+                    .orElse(StandardCharsets.ISO_8859_1);
     }
 
-    private MultiValueMap<String, String> buildHeader() {
-        final MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
-        headers.add(CONTENT_TYPE, APPLICATION_JSON);
-        return headers;
+    private String buildErrorMessage(ClientResponse response) {
+        return String.format("ClientResponse has erroneous status code: %d %s",
+                    response.statusCode().value(),
+                    response.statusCode().getReasonPhrase());
     }
 }

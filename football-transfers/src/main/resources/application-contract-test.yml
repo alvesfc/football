@@ -1,16 +1,16 @@
 #############################################################################
 ## Cassandra Configuration
 #############################################################################
-spring:
-  data:
-    cassandra:
-      keyspace-name: football_transfers
-      contact-points: 127.0.0.1
-      port: 9142
-      username: cassandra
-      password: cassandra
-      consistency-level: quorum
-      serial-consistency-level: quorum
+#spring:
+#  data:
+#    cassandra:
+#      keyspace-name: football_transfers
+#      contact-points: 127.0.0.1
+#      port: 9142
+#      username: cassandra
+#      password: cassandra
+#      consistency-level: quorum
+#      serial-consistency-level: quorum
 
 endpoint:
   teams: http://localhost:9078
