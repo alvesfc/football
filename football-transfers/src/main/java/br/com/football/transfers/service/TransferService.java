@@ -1,6 +1,7 @@
 package br.com.football.transfers.service;
 
 import br.com.football.transfers.rest.CreateRequest;
+import br.com.football.transfers.thirdParty.players.PlayerClient;
 import br.com.football.transfers.thirdParty.teams.TeamClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,15 +14,19 @@ public class TransferService {
 
     private TeamClient teamClient;
 
+    private PlayerClient playerClient;
+
     @Autowired
-    public TransferService(TeamClient teamClient) {
+    public TransferService(TeamClient teamClient, PlayerClient playerClient) {
         this.teamClient = teamClient;
+        this.playerClient = playerClient;
     }
 
     public Mono<UUID> create(final CreateRequest createRequest) {
 
         return teamClient.find(createRequest.getTeam())
-                .map(teamResponse -> UUID.randomUUID());
+                .zipWith(playerClient.find(createRequest.getPlayer()))
+                .map(mono -> UUID.randomUUID());
     }
 
     public Mono<CreateRequest> find(final UUID code) {

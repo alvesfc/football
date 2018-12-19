@@ -27,14 +27,14 @@ Contract.make {
     response {
         status 400
 
-        body([
-                "errors": [
-                        [
-                                "code"   : "TEAM_NOT_FOUND",
-                                "message": "Team not found."
-                        ]
-                ]
-        ])
+//        body([
+//                "errors": [
+//                        [
+//                                "code"   : "TEAM_NOT_FOUND",
+//                                "message": "Team not found."
+//                        ]
+//                ]
+//        ])
 
         headers {
             contentType(applicationJson())

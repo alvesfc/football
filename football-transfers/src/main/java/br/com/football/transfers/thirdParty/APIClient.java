@@ -1,10 +1,12 @@
 package br.com.football.transfers.thirdParty;
 
+import br.com.football.transfers.FootballTransfersApplication;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.collect.ImmutableMap;
 import net.logstash.logback.marker.Markers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.core.io.buffer.DataBufferUtils;
 import org.springframework.http.HttpStatus;
@@ -84,13 +86,13 @@ public class APIClient {
 
     private Charset buildCharset(ClientResponse response) {
         return response.headers().contentType()
-                    .map(MimeType::getCharset)
-                    .orElse(StandardCharsets.ISO_8859_1);
+                .map(MimeType::getCharset)
+                .orElse(StandardCharsets.ISO_8859_1);
     }
 
     private String buildErrorMessage(ClientResponse response) {
         return String.format("ClientResponse has erroneous status code: %d %s",
-                    response.statusCode().value(),
-                    response.statusCode().getReasonPhrase());
+                response.statusCode().value(),
+                response.statusCode().getReasonPhrase());
     }
 }
