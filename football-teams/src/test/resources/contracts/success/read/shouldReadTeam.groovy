@@ -19,7 +19,9 @@ Contract.make {
 
     response {
         status 200
-
+        headers {
+            contentType(applicationJson())
+        }
         body([
                 "name"   : value(consumer('Arsenal'), producer(regex('^.{3,30}$'))),
                 "fullName"   : value(consumer('Arsenal Football Club'), producer(regex('^.{3,30}$'))),
