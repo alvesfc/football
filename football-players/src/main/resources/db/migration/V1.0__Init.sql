@@ -3,6 +3,7 @@ CREATE SEQUENCE IDT_PLAYER_SQ;
 
 CREATE TABLE football_player.players (
 	idt_player int8 NOT NULL,
+	cod_player uuid NOT NULL,
 	dat_borndate date NOT NULL,
 	nam_fullname varchar(60) NULL,
 	nam_name varchar(30) NOT NULL,

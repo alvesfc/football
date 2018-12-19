@@ -19,9 +19,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Set;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -39,6 +41,9 @@ public class Player {
     @Column(name = "idt_player")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "player_seq")
     private Long id;
+    @NotNull
+    @Column(name = "cod_player")
+    private UUID code;
     @Size(max = 30)
     @Column(name = "nam_name")
     private String name;

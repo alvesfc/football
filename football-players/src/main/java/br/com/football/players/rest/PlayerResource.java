@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.UUID;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -51,7 +52,7 @@ public class PlayerResource {
             consumes = APPLICATION_JSON_VALUE,
             produces = APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity read(@PathVariable(value = "code") final Long code) {
+    ResponseEntity read(@PathVariable(value = "code") final UUID code) {
         return ResponseEntity
                 .ok()
                 .body(playerService.find(code));
@@ -61,7 +62,7 @@ public class PlayerResource {
             consumes = APPLICATION_JSON_VALUE,
             produces = APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity update(@PathVariable(value = "code") final Long code,
+    ResponseEntity update(@PathVariable(value = "code") final UUID code,
                           @Valid @RequestBody final UpdateRequest updateRequest) {
 
         playerService.update(code, updateRequest);
@@ -75,7 +76,7 @@ public class PlayerResource {
             consumes = APPLICATION_JSON_VALUE,
             produces = APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity delete(@PathVariable(value = "code") final Long code) {
+    ResponseEntity delete(@PathVariable(value = "code") final UUID code) {
 
         playerService.delete(code);
 

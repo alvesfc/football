@@ -11,7 +11,7 @@ Contract.make {
 
     request {
         headers {
-            contentType(applicationJson())
+            contentType(applicationJsonUtf8())
         }
         method HttpMethods.HttpMethod.POST
         url value(consumer(regex('/players')), producer('/players'))
@@ -31,12 +31,12 @@ Contract.make {
         status 201
 
         body([
-                "code": value(consumer('10'), producer(regex('[+]?[0-9]{1,18}')))
+                "code": value(consumer('fd91cec1-9b73-4809-8474-1c5e16292135'), producer(regex(new RegexPatterns().uuid().toString())))
         ])
 
         headers {
-            contentType(applicationJson())
-            header("location", regex('/players/([+]?[0-9]{1,18})'))
+            contentType(applicationJsonUtf8())
+            header("location", regex("/players/${new RegexPatterns().uuid().toString()}"))
         }
     }
 }

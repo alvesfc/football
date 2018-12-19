@@ -13,6 +13,7 @@ import br.org.ehandler.exception.message.MessageDefault;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,14 +26,15 @@ public class PlayerService {
     this.playerRepository = playerRepository;
   }
 
-  private Player getEntity(Long code) {
-    return playerRepository.findById(code)
+  private Player getEntity(final UUID code) {
+    return playerRepository.findByCode(code)
             .orElseThrow(() -> new NotFoundException(new MessageDefault(ErrorCode.PLAYER_NOT_FOUND)));
   }
 
-  public Long create(final CreateRequest request) {
+  public UUID create(final CreateRequest request) {
 
     Player player = playerRepository.save(Player.builder()
+            .code(UUID.randomUUID())
             .name(request.getName())
             .fullName(request.getFullName())
             .nationality(request.getNationality())
@@ -46,16 +48,17 @@ public class PlayerService {
                     .collect(Collectors.toSet()))
             .build());
 
-    return player.getId();
+    return player.getCode();
 
   }
 
-  public void update(final Long code, final UpdateRequest request) {
+  public void update(final UUID code, final UpdateRequest request) {
 
     Player entity = getEntity(code);
 
     Player update = Player.builder()
-            .id(code)
+            .id(entity.getId())
+            .code(code)
             .name(request.getName() == null ? entity.getName() : request.getName())
             .fullName(request.getFullName() == null ? entity.getFullName() : request.getFullName())
             .nationality(request.getNationality() == null ? entity.getNationality() : request.getNationality())
@@ -72,14 +75,14 @@ public class PlayerService {
     playerRepository.save(update);
   }
 
-  public void delete(final Long code) {
+  public void delete(final UUID code) {
     Player entity = getEntity(code);
 
     playerRepository.delete(entity);
 
   }
 
-  public ReadResponse find(final Long code) {
+  public ReadResponse find(final UUID code) {
     Player entity = getEntity(code);
 
     return ReadResponse.builder()

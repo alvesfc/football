@@ -11,10 +11,11 @@ Contract.make {
 
     request {
         headers {
-            contentType(applicationJson())
+            contentType(applicationJsonUtf8())
         }
         method HttpMethods.HttpMethod.PUT
-        url value(consumer(regex('/players/[0-9]{1,18}')), producer('/players/1'))
+        url value(consumer(regex("/players/${new RegexPatterns().uuid().toString()}")), producer('/players/0a74c042-7d65-40a7-ae0e-4cb8e6d2bda6'))
+
         body([
                 "name"       : value(consumer(optional(regex('^.{3,30}$'))), producer('Arp')),
                 "fullName"   : value(consumer(optional(regex('^.{6,60}$'))), producer('Jann-Fiete Arp')),

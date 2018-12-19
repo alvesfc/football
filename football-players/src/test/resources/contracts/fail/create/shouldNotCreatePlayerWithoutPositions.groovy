@@ -11,7 +11,7 @@ Contract.make {
 
     request {
         headers {
-            contentType(applicationJson())
+            contentType(applicationJsonUtf8())
         }
         method HttpMethods.HttpMethod.POST
         url value(consumer(regex('/players')), producer('/players'))
@@ -36,7 +36,7 @@ Contract.make {
         ])
 
         headers {
-            contentType(applicationJson())
+            contentType(applicationJsonUtf8())
         }
     }
 }

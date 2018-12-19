@@ -11,10 +11,10 @@ Contract.make {
 
     request {
         headers {
-            contentType(applicationJson())
+            contentType(applicationJsonUtf8())
         }
         method HttpMethods.HttpMethod.PUT
-        url value(consumer(regex('/players/[0-9]{1,18}')), producer('/players/1'))
+        url value(consumer(regex("/players/${new RegexPatterns().uuid().toString()}")),producer('/players/ab74980b-28cd-44b2-8cc0-c51ff0a336d8'))
         body([
                 "name"       : value(consumer(regex('^.{3,30}$')), producer('D. Mbonabucya')),
                 "fullName"   : value(consumer(optional(regex('^.{6,60}$'))), producer('Désiré Mbonabucya ')),
@@ -40,7 +40,7 @@ Contract.make {
         ])
 
         headers {
-            contentType(applicationJson())
+            contentType(applicationJsonUtf8())
         }
     }
 }

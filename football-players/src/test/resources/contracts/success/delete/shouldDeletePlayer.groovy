@@ -11,10 +11,10 @@ Contract.make {
 
     request {
         headers {
-            contentType(applicationJson())
+            contentType(applicationJsonUtf8())
         }
         method HttpMethods.HttpMethod.DELETE
-        url value(consumer(regex('/players/[0-9]{1,18}')), producer('/players/15'))
+        url value(consumer(regex("/players/${new RegexPatterns().uuid().toString()}")), producer('/players/78ef0dd9-af1b-4580-be67-59246a71298e'))
     }
 
     response {

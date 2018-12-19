@@ -11,15 +11,17 @@ Contract.make {
 
     request {
         headers {
-            contentType(applicationJson())
+            contentType(applicationJsonUtf8())
         }
         method HttpMethods.HttpMethod.GET
-        url value(consumer(regex('/players/[0-9]{1,18}')), producer('/players/10'))
+        url value(consumer(regex("/players/${new RegexPatterns().uuid().toString()}")), producer('/players/d0dcaaff-cb80-4054-98b4-f4b11b99d360'))
     }
 
     response {
         status 200
-
+        headers {
+            contentType(applicationJsonUtf8())
+        }
         body([
                 "name"       : value(consumer('J. Arp'), producer(regex('^.{3,30}$'))),
                 "fullName"   : value(consumer('Jann-Fiete Arp'), producer(optional(regex('^.{6,60}$')))),

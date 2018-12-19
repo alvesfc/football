@@ -3,6 +3,8 @@ package br.com.football.players.rest;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -13,5 +15,5 @@ import lombok.*;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateResponse {
 
-    private Long code;
+    private UUID code;
 }

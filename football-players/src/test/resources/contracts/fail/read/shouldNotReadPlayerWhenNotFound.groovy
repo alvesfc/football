@@ -11,10 +11,10 @@ Contract.make {
 
     request {
         headers {
-            contentType(applicationJson())
+            contentType(applicationJsonUtf8())
         }
         method HttpMethods.HttpMethod.GET
-        url value(consumer(regex('/players/[0-9]{1,18}')), producer('/players/1'))
+        url value(consumer(regex("/players/${new RegexPatterns().uuid().toString()}")),producer('/players/b2b0c1c6-2f27-4f41-b053-a0ca9222e6e9'))
     }
 
     response {
@@ -30,7 +30,7 @@ Contract.make {
         ])
 
         headers {
-            contentType(applicationJson())
+            contentType(applicationJsonUtf8())
         }
     }
 }
