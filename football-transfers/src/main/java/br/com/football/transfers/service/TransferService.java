@@ -3,6 +3,8 @@ package br.com.football.transfers.service;
 import br.com.football.transfers.rest.CreateRequest;
 import br.com.football.transfers.thirdParty.players.PlayerClient;
 import br.com.football.transfers.thirdParty.teams.TeamClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
@@ -11,6 +13,8 @@ import java.util.UUID;
 
 @Service
 public class TransferService {
+
+    static final Logger LOG = LoggerFactory.getLogger(TransferService.class);
 
     private TeamClient teamClient;
 
