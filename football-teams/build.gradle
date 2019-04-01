@@ -100,7 +100,7 @@ publishing {
     repositories {
         maven {
             // change to point to your repo, e.g. http://my.org/repo
-            url "https://github.com/alvesfc/football/raw/master/repository"
+            url "${projectDir}/../repository/"
         }
     }
     publications {
