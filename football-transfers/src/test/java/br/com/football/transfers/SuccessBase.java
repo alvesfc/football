@@ -6,7 +6,8 @@ import org.springframework.test.context.TestPropertySource;
 
 @AutoConfigureStubRunner(ids = { "br.com.football.teams:football-teams-stubs:9077",
         "br.com.football.players:football-players-stubs:9073" },
-        stubsMode = StubRunnerProperties.StubsMode.LOCAL,
+        repositoryRoot = "https://github.com/alvesfc/football/raw/master/repository",
+        stubsMode = StubRunnerProperties.StubsMode.REMOTE,
         consumerName = "success",
         stubsPerConsumer = true
 )
