@@ -11,6 +11,12 @@ import lombok.ToString;
 
 import java.util.UUID;
 
+/**
+ * Class that represents a create team response .
+ *
+ * @author alvesfc
+ * @version 1.0
+ */
 @Getter
 @Setter
 @EqualsAndHashCode

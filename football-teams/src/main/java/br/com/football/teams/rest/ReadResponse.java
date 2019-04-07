@@ -10,6 +10,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Class that represents a read team response.
+ *
+ * @author alvesfc
+ * @version 1.0
+ */
 @Getter
 @Setter
 @EqualsAndHashCode

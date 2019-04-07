@@ -13,6 +13,12 @@ import lombok.ToString;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+/**
+ * Class that represents a create team request .
+ *
+ * @author alvesfc
+ * @version 1.0
+ */
 @Getter
 @Setter
 @EqualsAndHashCode

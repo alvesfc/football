@@ -12,6 +12,12 @@ import lombok.ToString;
 
 import javax.validation.constraints.Pattern;
 
+/**
+ * Class that represents a update team request .
+ *
+ * @author alvesfc
+ * @version 1.0
+ */
 @Getter
 @Setter
 @EqualsAndHashCode

@@ -3,7 +3,7 @@ package br.com.football.teams.exception;
 import br.org.ehandler.exception.message.ErrorCodeDefault;
 
 /**
- * Classe com os códigos de erros que podem ocorrer na aplicação.
+ *Class with error codes that may occur in the application.
  *
  * @author alvesfc
  * @version 1.0
