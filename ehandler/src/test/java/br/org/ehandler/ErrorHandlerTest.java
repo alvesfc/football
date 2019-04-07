@@ -2,6 +2,7 @@ package br.org.ehandler;
 
 import br.org.ehandler.exception.BadRequestException;
 import br.org.ehandler.exception.NotFoundException;
+import br.org.ehandler.exception.message.Message;
 import br.org.ehandler.exception.message.MessageDefault;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,10 +18,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.context.request.WebRequest;
+import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -29,62 +33,72 @@ import static org.mockito.Mockito.when;
 @RunWith(SpringRunner.class)
 public class ErrorHandlerTest {
 
-  @MockBean
-  private HttpMessageNotReadableException httpMessageNotReadableException;
-  @MockBean
-  private MethodArgumentNotValidException methodArgumentNotValidException;
-  @MockBean
-  private BindingResult bindingResult;
-  @MockBean
-  private HttpHeaders headers;
-  @MockBean
-  private WebRequest request;
-  @MockBean
-  private MessageSource messageSource;
+    @MockBean
+    private HttpMessageNotReadableException httpMessageNotReadableException;
+    @MockBean
+    private MethodArgumentNotValidException methodArgumentNotValidException;
+    @MockBean
+    private BindingResult bindingResult;
+    @MockBean
+    private HttpHeaders headers;
+    @MockBean
+    private WebRequest request;
+    @MockBean
+    private MessageSource messageSource;
 
-  @Test
-  public void handleHttpMessageNotReadable() {
+    @Test
+    public void handleHttpMessageNotReadable() {
 
-    when(httpMessageNotReadableException.getRootCause()).thenReturn(new BadRequestException(new MessageDefault("key", "arg1")));
-    when(request.getLocale()).thenReturn(Locale.getDefault());
+        Set<Message> messages = new HashSet<>();
+        messages.add(new MessageDefault("key", "arg1"));
 
-    ErrorHandler errorHandler = new ErrorHandler(this.messageSource);
+        when(httpMessageNotReadableException.getRootCause()).thenReturn(new BadRequestException(Mono.just(messages)));
+        when(request.getLocale()).thenReturn(Locale.getDefault());
 
-    ResponseEntity<Object> responseEntity = errorHandler.handleHttpMessageNotReadable(httpMessageNotReadableException, headers, HttpStatus.BAD_REQUEST, request);
+        ErrorHandler errorHandler = new ErrorHandler(this.messageSource);
 
-    assertEquals(responseEntity.getStatusCode(), HttpStatus.BAD_REQUEST);
-    assertNotNull(responseEntity.getBody());
-  }
+        ResponseEntity<Object> responseEntity = errorHandler
+                .handleHttpMessageNotReadable(httpMessageNotReadableException, headers, HttpStatus.BAD_REQUEST,
+                        request);
 
-  @Test
-  public void notFoundException() {
+        assertEquals(responseEntity.getStatusCode(), HttpStatus.BAD_REQUEST);
+        assertNotNull(responseEntity.getBody());
+    }
 
-    when(request.getLocale()).thenReturn(Locale.getDefault());
-    when(request.getHeader("content-type")).thenReturn(MediaType.APPLICATION_JSON_VALUE);
+    @Test
+    public void notFoundException() {
+        Set<Message> messages = new HashSet<>();
+        messages.add(new MessageDefault("key", "arg1"));
 
-    ErrorHandler errorHandler = new ErrorHandler(this.messageSource);
+        when(request.getLocale()).thenReturn(Locale.getDefault());
+        when(request.getHeader("content-type")).thenReturn(MediaType.APPLICATION_JSON_VALUE);
 
-    ResponseEntity<ErrorResponse> responseEntity = errorHandler.notFoundException(new NotFoundException(new MessageDefault("key", "arg1")), request);
+        ErrorHandler errorHandler = new ErrorHandler(this.messageSource);
 
-    assertEquals(responseEntity.getStatusCode(), HttpStatus.NOT_FOUND);
-    assertNotNull(responseEntity.getBody());
-  }
+        ResponseEntity<ErrorResponse> responseEntity = errorHandler
+                .notFoundException(new NotFoundException(Mono.just(messages)), request);
 
-  @Test
-  public void handleMethodArgumentNotValid() {
+        assertEquals(responseEntity.getStatusCode(), HttpStatus.NOT_FOUND);
+        assertNotNull(responseEntity.getBody());
+    }
 
-    List<FieldError> fieldErrors = new ArrayList<>();
-    fieldErrors.add(new FieldError("value", "value","value"));
+    @Test
+    public void handleMethodArgumentNotValid() {
 
-    when(bindingResult.getFieldErrors()).thenReturn(fieldErrors);
-    when(methodArgumentNotValidException.getBindingResult()).thenReturn(bindingResult);
-    when(request.getLocale()).thenReturn(Locale.getDefault());
+        List<FieldError> fieldErrors = new ArrayList<>();
+        fieldErrors.add(new FieldError("value", "value", "value"));
 
-    ErrorHandler errorHandler = new ErrorHandler(this.messageSource);
+        when(bindingResult.getFieldErrors()).thenReturn(fieldErrors);
+        when(methodArgumentNotValidException.getBindingResult()).thenReturn(bindingResult);
+        when(request.getLocale()).thenReturn(Locale.getDefault());
 
-    ResponseEntity<Object> responseEntity = errorHandler.handleMethodArgumentNotValid(methodArgumentNotValidException, headers, HttpStatus.BAD_REQUEST, request);
+        ErrorHandler errorHandler = new ErrorHandler(this.messageSource);
 
-    assertEquals(responseEntity.getStatusCode(), HttpStatus.BAD_REQUEST);
-    assertNotNull(responseEntity.getBody());
-  }
+        ResponseEntity<Object> responseEntity = errorHandler
+                .handleMethodArgumentNotValid(methodArgumentNotValidException, headers, HttpStatus.BAD_REQUEST,
+                        request);
+
+        assertEquals(responseEntity.getStatusCode(), HttpStatus.BAD_REQUEST);
+        assertNotNull(responseEntity.getBody());
+    }
 }

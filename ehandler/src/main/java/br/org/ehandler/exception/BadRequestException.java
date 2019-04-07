@@ -1,6 +1,7 @@
 package br.org.ehandler.exception;
 
 import br.org.ehandler.exception.message.Message;
+import reactor.core.publisher.Mono;
 
 import java.util.Set;
 
@@ -13,18 +14,9 @@ public class BadRequestException extends ApplicationException {
     /**
      * Construtor que cria uma exceção a partir de uma mensagem de erro.
      *
-     * @param message -  Mensagem de erro.
-     */
-    public BadRequestException(final Message message) {
-        super(message);
-    }
-
-    /**
-     * Construtor que cria uma exceção a partir de uma mensagem de erro.
-     *
      * @param messages -  Lista de Mensagens de erro.
      */
-    public BadRequestException(final Set<Message> messages) {
+    public BadRequestException(final Mono<Set<Message>> messages) {
         super(messages);
     }
 }

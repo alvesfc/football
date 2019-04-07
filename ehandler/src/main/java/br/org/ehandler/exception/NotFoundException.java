@@ -1,6 +1,7 @@
 package br.org.ehandler.exception;
 
 import br.org.ehandler.exception.message.Message;
+import reactor.core.publisher.Mono;
 
 import java.util.Set;
 
@@ -15,16 +16,8 @@ public class NotFoundException extends ApplicationException {
      *
      * @param message -  Mensagem de erro.
      */
-    public NotFoundException(final Message message) {
+    public NotFoundException(final Mono<Set<Message>> message) {
         super(message);
     }
 
-    /**
-     * Construtor que cria uma exceção a partir de uma mensagem de erro.
-     *
-     * @param messages -  Lista de Mensagens de erro.
-     */
-    public NotFoundException(final Set<Message> messages) {
-        super(messages);
-    }
 }
