@@ -1,8 +1,8 @@
 buildscript {
     ext {
-        springCloudVersion = 'Finchley.RELEASE'
-        springBootVersion = '2.1.0.RELEASE'
-        springCloudContractVersion = '2.1.0.M2'
+        springCloudVersion = 'Greenwich.RELEASE'
+        springBootVersion = '2.1.4.RELEASE'
+        springCloudContractVersion = '2.1.1.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -45,7 +45,7 @@ repositories {
 
 
 ext {
-    springCloudVersion = 'Finchley.RELEASE'
+    springCloudVersion = 'Greenwich.RELEASE'
 }
 
 dependencies {
