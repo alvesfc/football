@@ -1,5 +1,5 @@
 
-=== *Alteração de um Time*
+=== *Update a team*
 
 .request
 include::validate_shouldUpdateTeam/request-fields.adoc[]

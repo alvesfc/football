@@ -1,5 +1,5 @@
 
-=== *Exclusão de um Time*
+=== *Delete a team*
 
 .request
 include::validate_shouldDeleteTeam/http-request.adoc[]

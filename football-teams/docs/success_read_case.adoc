@@ -1,5 +1,5 @@
 
-=== *Consulta de um Time*
+=== *Read a team*
 
 .request
 include::validate_shouldReadTeam/http-request.adoc[]

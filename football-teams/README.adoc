@@ -1,9 +1,8 @@
 = football-players
 
-Aplicação para estudo do Spring Framework
+Application for Spring Framework study
 
 == Tech
-Tecnologias utilizadas:
 
 * Spring (link:https://cloud.spring.io/spring-cloud-sleuth[Spring Cloud Sleuth], link:https://projects.spring.io/spring-data-mongodb/[Spring Data MongoDB], link:https://spring.io/guides/gs/actuator-service[Spring Boot Actuator], link:https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html[Spring Boot Devtools], link:https://spring.io/projects/spring-restdocs[Spring REST Docs], link:https://cloud.spring.io/spring-cloud-contract/[Spring Cloud Contract])
 * link:https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-metrics[Micrometer]
@@ -12,7 +11,7 @@ Tecnologias utilizadas:
 * link:https://asciidoctor.org[Asciidoctor]
 * link:https://gradle.org[Gradle]
 
-== Estrutura do projeto
+== Project structure
 
 
 ```
@@ -22,17 +21,17 @@ Tecnologias utilizadas:
 
 
 
- - `docker` - Diretório com as imagens do docker
- - `docs` - Diretório com a documentação do projeto gerado a partir dos testes
- - `gradle` - Diretório com as configurações dos plugins
+ - `docker` - Directory with docker images
+ - `docs` - Directory with project documentation generated from tests
+ - `gradle` - Directory with plugins settings
 
 ```
 
-== Comandos
+== Commands
+[TODO]
+=== Database configuration (Docker)
 
-=== Configuração do banco de dados via docker
-
- Executar o comando abaixo no diretório docker, na raiz do projeto
+ Execute the command below into docker directory.
 
 [source,shell]
 ----
@@ -40,25 +39,25 @@ docker-compose up
 ----
 
 
-=== Execução de testes
+=== Run Tests
 
- Build do projeto e execução dos testes.
+ Run gradle build command for tests execution
 
 [source,shell]
 ----
 ./gradlew clean build
 ----
 
-=== Iniciando o projeto
+=== Starting the project
 
-    Iniciar o projeto com o profile default (local) na porta http://localhost:9075.
+    Start the project with default profile (local) at the server port 9070 (http://localhost:9075)
 
 [source,shell]
 ----
 ./gradlew bootrun
 ----
 
-=== Iniciando o projeto com um profile específico
+=== Starting the project with specific profile
 
 [source,shell]
 ----

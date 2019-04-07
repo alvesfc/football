@@ -1,16 +1,16 @@
 
 = Football Teams API
 
-== *Cenários de Teste*
+== *Test Scenarios*
 
-* Sucesso
-** link:success_create_case.html[Criação]
-** link:success_read_case.html[Consulta]
-** link:success_update_case.html[Alteração]
-** link:success_delete_case.html[Exclusão]
-* Fluxo de Exceção
-** link:fail_create_case.html[Criação]
-** link:fail_read_case.html[Consulta]
-** link:fail_update_case.html[Alteração]
-** link:fail_delete_case.html[Exclusão]
+* Success
+** link:success_create_case.html[Create]
+** link:success_read_case.html[Read]
+** link:success_update_case.html[Update]
+** link:success_delete_case.html[Delete]
+* Exception Flow
+** link:fail_create_case.html[Create]
+** link:fail_read_case.html[Read]
+** link:fail_update_case.html[Update]
+** link:fail_delete_case.html[Delete]
 

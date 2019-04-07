@@ -1,8 +1,8 @@
 
-== *Criação de um Time*
+== *Creating a Team*
 
 
-=== *Sem informar o nome*
+=== *Without name*
 
 .request
 include::validate_shouldNotCreateTeamWithoutName/request-fields.adoc[]
@@ -14,7 +14,7 @@ include::validate_shouldNotCreateTeamWithoutName/response-fields.adoc[]
 
 include::validate_shouldNotCreateTeamWithoutName/http-response.adoc[]
 
-=== *Informando um nome inválido*
+=== *With invalida name*
 
 .request
 include::validate_shouldNotCreateTeamWithInvalidName/request-fields.adoc[]
@@ -26,7 +26,7 @@ include::validate_shouldNotCreateTeamWithInvalidName/response-fields.adoc[]
 
 include::validate_shouldNotCreateTeamWithInvalidName/http-response.adoc[]
 
-=== *Sem informar o nome completo*
+=== *Without full name*
 
 .request
 include::validate_shouldNotCreateTeamWithoutFullname/request-fields.adoc[]
@@ -38,7 +38,7 @@ include::validate_shouldNotCreateTeamWithoutFullname/response-fields.adoc[]
 
 include::validate_shouldNotCreateTeamWithoutFullname/http-response.adoc[]
 
-=== *Informando o nome completo inválido*
+=== *With invalid full name*
 
 .request
 include::validate_shouldNotCreateTeamWithInvalidFullname/request-fields.adoc[]
@@ -51,7 +51,7 @@ include::validate_shouldNotCreateTeamWithInvalidFullname/response-fields.adoc[]
 include::validate_shouldNotCreateTeamWithInvalidFullname/http-response.adoc[]
 
 
-=== *Sem informar a sigla*
+=== *Without acronym*
 
 .request
 include::validate_shouldNotCreateTeamWithoutAcronym/request-fields.adoc[]
@@ -63,7 +63,7 @@ include::validate_shouldNotCreateTeamWithoutAcronym/response-fields.adoc[]
 
 include::validate_shouldNotCreateTeamWithoutAcronym/http-response.adoc[]
 
-=== *Informando uma sigla inválida*
+=== *With invalid acronym*
 
 .request
 include::validate_shouldNotCreateTeamWithInvalidAcronym/request-fields.adoc[]
@@ -75,7 +75,7 @@ include::validate_shouldNotCreateTeamWithInvalidAcronym/response-fields.adoc[]
 
 include::validate_shouldNotCreateTeamWithInvalidAcronym/http-response.adoc[]
 
-=== *Sem informar o país*
+=== *Without country*
 
 .request
 include::validate_shouldNotCreateTeamWithoutCountry/request-fields.adoc[]
@@ -87,7 +87,7 @@ include::validate_shouldNotCreateTeamWithoutCountry/response-fields.adoc[]
 
 include::validate_shouldNotCreateTeamWithoutCountry/http-response.adoc[]
 
-=== *Informando um país inválido*
+=== *With invalid country*
 
 .request
 include::validate_shouldNotCreateTeamWithInvalidCountry/request-fields.adoc[]

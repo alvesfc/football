@@ -1,6 +1,6 @@
 
 
-=== *Criação de um Time*
+=== *Creating a team*
 
 .request
 include::validate_shouldCreateTeam/request-fields.adoc[]
