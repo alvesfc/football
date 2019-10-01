@@ -31,7 +31,7 @@ apply plugin: 'spring-cloud-contract'
 
 apply from: 'gradle/documentation.gradle'
 
-group = 'br.com.football'
+group = 'br.com.football.player.skills'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 compileKotlin {
@@ -52,6 +52,7 @@ repositories {
     jcenter()
     maven { url "https://repo.spring.io/snapshot" }
     maven { url "https://repo.spring.io/milestone" }
+    maven{url "https://github.com/alvesfc/football/raw/master/repository"}
     mavenLocal()
 }
 
